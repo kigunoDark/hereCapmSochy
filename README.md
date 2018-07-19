@@ -1,9 +1,10 @@
 # ChekOutAlfa
 tools you need:
-1. Ndoejs 8.11.2
-2. Mongodb - the last verion
-3. Git - and you have to know how to use it.
-
+<ul>
+  <li>Ndoe.js 8.11.2</li>
+  <li>Mongodb - the last verion</li>
+  <li>Git - and you have to know how to use it</li>
+</ul>
 For developers:
 1.You need to clone this project from github, than you need to use <b> npm install </b> in a folder of project.
 2.You can launch the server by using a comand - <b> npm rund server </b>
