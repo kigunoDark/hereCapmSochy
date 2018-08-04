@@ -22,9 +22,9 @@ const ProfileSchema = new Schema({
     type: String
   },
 
-  level: {
-    type: Int32Array
-  },
+  // level: {
+  //   type: Int32Array
+  // },
 
   rank: {
     type: String
