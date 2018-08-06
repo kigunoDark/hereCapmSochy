@@ -19,7 +19,8 @@ const ProfileSchema = new Schema({
     type: String
   },
   status: {
-    type: String
+    type: String,
+    required: true
   },
 
   // level: {
@@ -33,9 +34,11 @@ const ProfileSchema = new Schema({
   orgEvents: {
     type: [String]
   },
+
   atEvents: {
     type: [String]
   },
+
   bio: {
     type: String
   },
@@ -114,6 +117,12 @@ const ProfileSchema = new Schema({
       type: String
     },
     facebook: {
+      type: String
+    },
+    vk: {
+      type: String
+    },
+    snapchat: {
       type: String
     }
   },

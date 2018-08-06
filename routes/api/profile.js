@@ -3,6 +3,9 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
 
+//Load Validation
+const validateProfileInput = require("../../validation/profile");
+
 // Load Profile Model
 const Profile = require("../../models/Profile");
 
@@ -43,6 +46,15 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    const { errors, isValid } = validateProfileInput(req.body);
+
+    //Check validation
+
+    if (!isValid) {
+      //Return any errors with 400 status
+      return res.status(400).json(errors);
+    }
+
     //Get fields
     const profileFields = {};
     profileFields.user = req.user.id;
@@ -69,11 +81,13 @@ router.post(
     if (req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
     if (req.body.instagram) profileFields.social.instagram = req.body.instagram;
     if (req.body.facebook) profileFields.social.facebook = req.body.facebook;
+    if (req.body.vk) profileFields.social.vk = req.body.vk;
+    if (req.body.snapchat) profileFields.social.snapchat = req.body.snapchat;
 
     Profile.findOne({ user: req.user.id }).then(profile => {
       if (profile) {
         //Update
-        Profile.findByIdAndUpdate(
+        Profile.findOneAndUpdate(
           { user: req.user.id },
           { $set: profileFields },
           { new: true }
